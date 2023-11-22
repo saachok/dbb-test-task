@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 import { getListFolders } from './functions/dropboxFuncs';
-import ItemsList from './components/ItemsList';
+import ItemsList from './components/ItemsList/ItemsList';
 
 function App() {
   const [items, setItems] = useState(null);
