@@ -9,8 +9,8 @@ const dbx = new Dropbox({
   fetch,
 });
 
-export const getListFolders = async () => {
-  const response = await dbx.filesListFolder({ path: '/Server app' });
+export const getListFolders = async path => {
+  const response = await dbx.filesListFolder({ path });
   return response.result;
 };
 
