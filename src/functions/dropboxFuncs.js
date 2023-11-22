@@ -13,3 +13,15 @@ export const getListFolders = async () => {
   const response = await dbx.filesListFolder({ path: '/Server app' });
   return response.result;
 };
+
+export const getThumbnails = async files => {
+  const paths = files
+    .filter(file => file['.tag'] === 'file')
+    .map(file => ({
+      path: file.path_lower,
+      size: 'w32h32',
+    }));
+
+  const response = await dbx.filesGetThumbnailBatch({ entries: paths });
+  return response.result;
+};
