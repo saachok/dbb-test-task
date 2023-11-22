@@ -21,3 +21,8 @@ export const getThumbnails = async files => {
   const response = await dbx.filesGetThumbnailBatch({ entries: paths });
   return response.result;
 };
+
+export const downloadFile = async path => {
+  const response = await dbx.filesDownload({ path });
+  return response.result;
+};
