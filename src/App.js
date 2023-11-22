@@ -5,33 +5,41 @@ import { getListFolders, getThumbnails } from './functions/dropboxFuncs';
 import ItemsList from './components/ItemsList/ItemsList';
 import PathForm from './components/PathForm/PathForm';
 
-const ROOT_PATH = '/Server app';
+const ROOT_PATH = '/server app';
 
 function App() {
   const [items, setItems] = useState([]);
-  const [location, setLocation] = useState({
-    rootPath: ROOT_PATH,
-    cursor: '',
-  });
+  const [location, setLocation] = useState(ROOT_PATH);
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log('location.rootPath', location.rootPath);
-      const res = await getListFolders(location.rootPath);
-      setItems(res.entries);
-      getThumbnails(res.entries);
+      try {
+        console.log('location', location);
+        const res = await getListFolders(location);
+        setItems(res.entries);
+        getThumbnails(res.entries);
+      } catch (error) {
+        alert(`Can't find entered directory.`);
+
+        if (location.toLocaleLowerCase() === '/server app') return;
+        let lastIndex = location.lastIndexOf('/');
+        let newPath = location.substring(0, lastIndex);
+        setLocation(newPath);
+
+        console.error(error);
+      }
     };
 
     fetchData();
-  }, [location.rootPath]);
+  }, [location]);
 
   const handleFormSubmit = path => {
-    setLocation(prevState => ({ ...prevState, rootPath: path }));
+    setLocation(path);
   };
 
   return (
     <>
-      <PathForm onSubmit={handleFormSubmit} path={location.rootPath} />
+      <PathForm onSubmit={handleFormSubmit} path={location} />
       <ItemsList items={items} />
     </>
   );

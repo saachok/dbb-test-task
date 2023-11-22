@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './PathForm.module.scss';
 
 const PathForm = ({ onSubmit, path }) => {
   const [inputPath, setInputPath] = useState('');
@@ -7,22 +8,34 @@ const PathForm = ({ onSubmit, path }) => {
     setInputPath(e.target.value);
   };
 
+  const handleGoBack = () => {
+    if (path.toLocaleLowerCase() === '/server app') return;
+    let lastIndex = path.lastIndexOf('/');
+    let newPath = path.substring(0, lastIndex);
+    onSubmit(newPath);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(`${path}/${inputPath.toLocaleLowerCase()}`);
+    if (!inputPath) return;
+    const newPath = `${path}/${inputPath.toLocaleLowerCase()}`.trim();
+    onSubmit(newPath);
     setInputPath('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Go to..."
-        value={inputPath}
-        onChange={handleInputChange}
-      />
-      <button type="submit">Submit!</button>
-    </form>
+    <div className={styles.wrapper}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Go to..."
+          value={inputPath}
+          onChange={handleInputChange}
+        />
+        <button type="submit">Submit!</button>
+      </form>
+      <button onClick={handleGoBack}>Go back</button>
+    </div>
   );
 };
 
