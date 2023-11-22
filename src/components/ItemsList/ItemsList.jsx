@@ -1,3 +1,4 @@
+import Item from '../Item/Item';
 import styles from './ItemsList.module.scss';
 
 const fileBase64Icon =
@@ -6,7 +7,7 @@ const fileBase64Icon =
 const folderBase64Icon =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA70lEQVR4nO2ZMQrCQBREp4rgYaxsjGew8FAaray8mJUHSMwVxObLwhcCCbLRYGbjPJhqN7DD223yASFELBmAI4AbAItI2LcFIYfIAs08ACxBRuWHyyP3n3z/FcAcRJgnlhmAi39zRsJFAgsA9w+u5LepABT+rgcpEtg0ruWvsx+yyBisG2aSLvL2vJMrUo903/ukjimSWlq8FlbgJ/+rN5IKpiJkmIyQYTJChskIGSYjZJiMkGEyQobJCBkmI2SYjJBhMkKGyQgZNnkjlS+EIUoqg56ya7Eg+LNuPbPrKpJ5mbHmgX1SeonOYagQAi2eGqmWy/FZdjgAAAAASUVORK5CYII=';
 
-const ItemsList = ({ items }) => {
+const ItemsList = ({ items, setLocation }) => {
   console.log('items', items);
 
   return (
@@ -33,10 +34,12 @@ const ItemsList = ({ items }) => {
           }
 
           return (
-            <li className={styles['list-item']} key={file.id}>
-              <img alt="Thumbnail" src={thumbnail} />
-              {file.name}
-            </li>
+            <Item
+              file={file}
+              thumbnail={thumbnail}
+              key={file.id}
+              setLocation={setLocation}
+            />
           );
         })}
     </ul>

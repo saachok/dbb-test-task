@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <PathForm onSubmit={handleFormSubmit} path={location} />
-      <ItemsList items={items} />
+      <ItemsList items={items} setLocation={path => setLocation(path)} />
     </>
   );
 }
