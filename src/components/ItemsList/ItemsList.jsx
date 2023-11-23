@@ -19,6 +19,7 @@ const ItemsList = ({ items, setLocation }) => {
   return (
     <ul className={styles.list}>
       {items?.sort(sortByType).map(file => (
+        //FIXME: Render <Item /> instead of <File /> & <Folder />
         <Fragment key={file.id}>
           {file.type === 'file' ? (
             <File file={file} onClick={hadnleOpenFile} />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { uploadFile } from '../../../functions/dropboxFuncs';
+import { uploadFile } from '../../../../functions/dropboxFuncs';
 
 import styles from './UploadButton.module.scss';
 

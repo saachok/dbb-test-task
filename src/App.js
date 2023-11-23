@@ -23,9 +23,11 @@ function App() {
         setItems(fetchedItems);
         getThumbnails(fetchedItems);
       } catch (error) {
-        alert(`Can't find entered directory.`);
+        if (error.status === 401) {
+          alert('Please log in.');
+        } else alert(`Can't find entered directory.`);
 
-        if (location.toLocaleLowerCase() === '/server_app') return;
+        if (location.toLocaleLowerCase() === ROOT_PATH) return;
         let lastIndex = location.lastIndexOf('/');
         let newPath = location.substring(0, lastIndex);
         setLocation(newPath);
