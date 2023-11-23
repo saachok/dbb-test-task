@@ -42,7 +42,7 @@ function App() {
     <>
       <div className={styles.toolkit}>
         <PathForm onSubmit={handleFormSubmit} path={location} />
-        <Toolbox />
+        <Toolbox path={location} />
       </div>
       <ItemsList items={items} setLocation={path => setLocation(path)} />
     </>

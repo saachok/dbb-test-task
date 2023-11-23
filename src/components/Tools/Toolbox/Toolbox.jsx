@@ -3,10 +3,10 @@ import UploadButton from '../UploadButton/UploadButton';
 
 import styles from './Toolbox.module.scss';
 
-const Toolbox = () => {
+const Toolbox = ({ path }) => {
   return (
     <div className={styles.toolbox}>
-      <UploadButton />
+      <UploadButton path={path} />
       <CreateFolderButton />
     </div>
   );
