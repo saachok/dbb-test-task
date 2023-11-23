@@ -31,10 +31,15 @@ const PathForm = ({ onSubmit, path }) => {
           placeholder="Go to..."
           value={inputPath}
           onChange={handleInputChange}
+          className={styles['input']}
         />
-        <button type="submit">Submit!</button>
+        <button className={styles['nav-btn']} type="submit">
+          Go to!
+        </button>
       </form>
-      <button onClick={handleGoBack}>Go back</button>
+      <button className={styles['nav-btn']} onClick={handleGoBack}>
+        Go back
+      </button>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import './App.css';
-
 import { getListFolders, getThumbnails } from './functions/dropboxFuncs';
 import ItemsList from './components/ItemsList/ItemsList';
 import PathForm from './components/PathForm/PathForm';
+import Toolbox from './components/Tools/Toolbox/Toolbox';
+
+import styles from './App.module.scss';
 
 const ROOT_PATH = '/server_app';
 
@@ -39,7 +40,10 @@ function App() {
 
   return (
     <>
-      <PathForm onSubmit={handleFormSubmit} path={location} />
+      <div className={styles.toolkit}>
+        <PathForm onSubmit={handleFormSubmit} path={location} />
+        <Toolbox />
+      </div>
       <ItemsList items={items} setLocation={path => setLocation(path)} />
     </>
   );
