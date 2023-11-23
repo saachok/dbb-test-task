@@ -28,16 +28,32 @@ export const downloadFile = async path => {
   // const response = await dbx.filesDownload({ path });
   // console.log('response', response);
   // return response.result;
-  fetch('http://localhost:8000/download?' + new URLSearchParams({ path }), {
-    mode: 'no-cors',
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  // console.log('res', res);
+  const response = await fetch(
+    'http://localhost:8000/download?' + new URLSearchParams({ path }),
+    {
+      mode: 'no-cors',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
+  return response;
 };
 
 export const getSharedLink = async path => {
-  const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
-  return response.result;
+  let link = null;
+  try {
+    const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
+    const sharedLink = response.result.url;
+    link = sharedLink;
+  } catch (error) {
+    const response = await dbx.sharingListSharedLinks({
+      path,
+      direct_only: true,
+    });
+    const sharedLink = response.result.links[0].url;
+    link = sharedLink;
+  } finally {
+    return { sharedLink: link };
+    // console.log('link', link);
+  }
 };

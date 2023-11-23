@@ -35,6 +35,9 @@ const localPath = 'local/file.txt';
 app.get('/', (req, res) => {
   console.log(req);
 });
+app.get('/json', (req, res) => {
+  res.json({ message: 'Hello, JSON!' });
+});
 
 // app.get('/download', async (req, res) => {
 //   try {
@@ -64,19 +67,6 @@ app.get('/', (req, res) => {
 
 app.get('/download', async (req, res) => {
   const path = req.query.path;
-
-  try {
-    const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
-    console.log('Shared link:');
-    console.log(response.result.url);
-  } catch (error) {
-    const response = await dbx.sharingListSharedLinks({
-      path,
-      direct_only: true,
-    });
-    const sharedLink = response.result.links[0].url;
-    console.log('Shared link:', sharedLink);
-  }
 
   dbx
     .filesDownload({ path })
