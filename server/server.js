@@ -38,22 +38,63 @@ app.get('/', (req, res) => {
   // console.log(`Receive GET request to http://localhost:${port}`);
 });
 
-app.post('/save-file', async (req, res) => {
-  try {
-    const data = req.body; // Assuming the blob data is sent in the request body
+app.get('/download', async (req, res) => {
+  const path = req.query.path;
+  // console.log('receivedString', receivedString);
 
-    // Specify the local path where you want to save the file
-    const localFilePath = './uploads/your-filename.txt';
+  // dbx
+  //   .sharingCreateSharedLinkWithSettings({ path })
+  //   .then(function (response) {
+  //     console.log('response:');
+  //     console.log(response);
+  //     console.log('shared link:');
+  //     console.log(response.result.url);
+  //   })
+  //   .catch(function (error) {
+  //     console.error(error);
+  //   });
 
-    // Write the blob data to a local file
-    fs.writeFileSync(localFilePath, data);
+  dbx
+    .filesDownload({ path })
+    .then(function (response) {
+      console.log(response.result);
+      fs.writeFile(
+        response.result.name,
+        response.result.fileBinary,
+        'binary',
+        function (err) {
+          if (err) {
+            throw err;
+          }
+          console.log('File: ' + response.result.name + ' saved.');
+        }
+      );
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 
-    res.status(200).send('File saved successfully');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
+  res.json({ message: 'String received successfully' });
 });
+
+// app.post('/save-file', async (req, res) => {
+//   try {
+//     const data = req.body; // Assuming the blob data is sent in the request body
+
+//     console.log('data', data);
+
+//     // Specify the local path where you want to save the file
+//     const localFilePath = './uploads/your-filename.txt';
+
+//     // Write the blob data to a local file
+//     fs.writeFileSync(localFilePath, data);
+
+//     res.status(200).send('File saved successfully');
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

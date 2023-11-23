@@ -11,7 +11,7 @@ const Item = ({ file, thumbnail, setLocation }) => {
     const response = await downloadFile(file.path_lower);
     // const response = await getSharedLink(file.path_lower);
 
-    console.log('response', response);
+    // console.log('response', response);
   };
 
   return (

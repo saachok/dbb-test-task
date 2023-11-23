@@ -5,7 +5,7 @@ import { getListFolders, getThumbnails } from './functions/dropboxFuncs';
 import ItemsList from './components/ItemsList/ItemsList';
 import PathForm from './components/PathForm/PathForm';
 
-const ROOT_PATH = '/server app';
+const ROOT_PATH = '/server_app';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -21,7 +21,7 @@ function App() {
       } catch (error) {
         alert(`Can't find entered directory.`);
 
-        if (location.toLocaleLowerCase() === '/server app') return;
+        if (location.toLocaleLowerCase() === '/server_app') return;
         let lastIndex = location.lastIndexOf('/');
         let newPath = location.substring(0, lastIndex);
         setLocation(newPath);

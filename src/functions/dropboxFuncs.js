@@ -24,28 +24,39 @@ export const getThumbnails = async files => {
 };
 
 export const downloadFile = async path => {
-  const headers = new Headers({
-    Authorization: 'Bearer ' + tempAccessToken,
-    'Dropbox-API-Arg': JSON.stringify({ path: path }),
-  });
+  // const headers = new Headers({
+  //   Authorization: 'Bearer ' + tempAccessToken,
+  //   'Dropbox-API-Arg': JSON.stringify({ path: path }),
+  // });
 
-  const response = await fetch(
-    'https://content.dropboxapi.com/2/files/download',
-    { method: 'POST', headers }
+  // const response = await fetch(
+  //   'https://content.dropboxapi.com/2/files/download',
+  //   { method: 'POST', headers }
+  // );
+
+  console.log('path', path);
+
+  // const response = await dbx.filesDownload({ path });
+  // console.log('response', response);
+  // return response.result;
+
+  const res = await fetch(
+    'http://localhost:8000/download?' + new URLSearchParams({ path }),
+    {
+      mode: 'no-cors',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      // body: JSON.stringify({ data: path }),
+    }
   );
-  const data = await response.blob();
-
-  await fetch('http://localhost:8000/save-file', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
+  const data = await res.json();
+  console.log('data', data);
 };
 // const response = await dbx.filesDownload({ path });
 // return response.result;
+// };
 
 export const getSharedLink = async path => {
   const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
-  // const response = await dbx.sharingGetSharedLinkMetadata({ url: path });
   return response.result;
 };
