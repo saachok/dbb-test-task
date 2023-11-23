@@ -10,8 +10,7 @@ app.use(express.json()); // Parse JSON requests
 app.use(cors()); // Enable CORS for all routes
 
 const accessToken =
-  'uat.ACP3W465iL1d7Y_IkxFhknJ0w0jfbkOMJoa5UZMb2C-mLn1mAQ7f20KfvMC1RxSFdnKAF6Xhk-4Sw2KUobd8z_b2s4d88CiGRCgmz1j1emBUbIwFRMJEjG4IkqAy-bzE93dlByqLAUQ6n3_dHuaSNnQ-sO1u7qZobY2d5odITTDbDlXASrqaBB1Hg30wf1I6gEHKbh-7oMw7c-8jh5i794YsBLOMicN2Z47NdgvcFur67XTi2l1EIFDCDW8zBjmqXZZ9-S-4LTl-26YrAyMfcdmUOSY2OignPkKJZrquxWOmNxLVsUBco-g8S-ivmOSnzF7qnZiFWtSfDxX_Pab7YttVxbMqMU0JAdm898uch4LBY6PSrTQxV-4OdJmbYleElLFGc7ozJ9GVV9KHvtiLjMUShOxwAG-LBrcLnAjPRyRTGwSzb9RlbpE9W_7e2uNCkHrRiYKbVWbB0vl4gi81xZJXOAZmOAT3Ky9I1NgmOaIVAk_O3vI-IzqrV5t1hNrx2zQvVnCFyqs6dp70tvxrXEuA5_T3Lg50mnNSl0GMV9ObXLuQmb_FpEDY0KAa3wP6-sE7X15CvC3AGlMa7UgB_BooNk0jYmyqy3m801hfR1VVLjchOnfoViX7vMZRqOlRDFooSp-T_AYS48YxFVawcAxsNmMKX11J5Qad-8lufkf8uup_f8Co5OoDDMTr7HrhoyLxbjLMGnVfJsJjB8m7n0oJNplNOeVtiiR9jCeGu0M-97SVTx6Su3qFP08gWRASKKMI8RnqKKvPrZ7yoYb9xtoS8Q0usnEcsro0IJt0k-QRvgps_rsZKr5Mltupak4mMBDVaMUFsYGMzHILJoltLxX2GwgF3dWyyGAT5QZTiQdTEcdA8uZBcakSQiz3VOcpBucg6JhINTJB1Xbw2u6eJ1mJeFCwjD5dcnxRxAjguXPB0-ueG918ch_1l0nDNnXMeurB9CPcqF3p_cxoPUu0TGzabjsqUCOwvfqxu_ivUkY-W9cdphscrH3gXoAu95OqdiiajIuBBK19VQO4NoXf5uGEVgihmXHxGLtyL6FV8uoz36wfHWLUV3cEtFfPiZK6cnLQ_-MmCdxH3t9zxrq3VW0R14takadUHqbmTlVxUD3lq9bDDga-kc8zvkQpMsMb9zhXmJao2C_oFtZfixPTFodWGlt6j3pzcDU_r81e7IGtVkW_4Y5oiDHGnxHGIAx9QNfuHM2czbwjGyxXjbesfY1cWmPtwFxy8F8fFaeS1YP29suPrzBhM5VbdpPvGUJhwOJLe-PEntANIpZKoz3JOvn8';
-
+  'uat.ACNewsNhqsB4Erz0BraH2NAGRPtkqAafP5bHqTBTTPY7xTrtoOcGrGrnFdeTeorsoibg6guXw_n3-TTjVPbMImbl8SUPYK6i-luoZJJrQX1BnP52UQfqZxIO5Iwp7PnnuJKiX29PSVQRMDW85Vbi1qaEhq-FeTgkyytfhY5VqUKO5Ahr52QzatmFYdZ_GY6qrKq3k16joVXkMgvQzMLc0YPvsJKcnErIaIwg-y_P4Oe2aOOhphHyRpiWWXzjzJDLMtMby7bC5W1BC8gZUm1k_Kh12VJUucWO8XINvBmCNJ2W8QN14YnFlx83E-ZkUxC32N_fhrnKnCaJAEFQcqKSBE33GNT8jW-302esvDipvUeufy0xxVzpp585EJxPMwTlaFqxlj2iiY4yIAY3zWDuxe3dCBkBeLmw9Te5Dmm1oCFycGRnl2CSicBHuu2AAKJxNX8OZS90VOgwZv1Q7qohysTpIIRIvMmfpiuOdyCw99SOw5OHwbeCmbJ2vwavB7kPI3DqILcWSGTZaqtdZTkEzLeTjMprjBL96-Kj6mlh29v6_q5y4qSENzWBIgKCuK5xlWMx1kPd98iY2tvGgpi88t-haWv8M14BcuquXI-6-Jr9impgdEH_c1XsAoFJK8CB6X_GtlNrMwyQYsze2iBHTqSNV7MhOg2yeo4_c4sAHewcBE8yxr1LICozB5FBgBl0ZYGoS2cM2lRbiKiNsUXj77V0dgVW-85_5N4qOwCGyjXYAsrMo6bJFTYL7qAEdKa2nE2GACPkgg5bBfjw573WSSZ-nj-mvbPXNMPFt1mqLD1wtaQg2YePJ2ywLxCeNkXt3yCgc4KEurqDFEQH_FzOOHT-rbtUpt1bT1N89fQ-8gSgoO9UtTle9ZW3sc8xsJCEj6r5aawbm58wis4ck5qdhvU17Hl-gQz99OF7ij8pZqdQzkkR0eh0WxJ3oyyRr_9xjKi5qi1qmOT4XN_e24mTFLLkJCXVN83rjN0SbbwwYY4lfwlGtP_x80yahKTLmeozB6niYqpa-7ieDCS8vNBrSQmZZCb3gsXq-MdTP4eN2l5lUXDSUEAgxsWKn8yzkQKdYHdGGVu_mR_oZCucZj_Zb5tjIovuf3K6T_nKrwDNJLVYsJ_S4w290YbFKPn4OXXukrg02dv2iN-fCQY65IyUAgXQiwBA_0jXzSBDA9-I4Xaie_zNmrVOSHdZDgWMBtaFoKIdP3MyxekhUyIvg_8A2l0rgqEndtAFKbIS5_UFtgWVwblsJJqwSLurbiaqU19THsDPvgqJJ6Pkptinsyx0SwAb';
 // Create a Dropbox client
 const dbx = new Dropbox({ accessToken });
 
@@ -35,24 +34,49 @@ const localPath = 'local/file.txt';
 
 app.get('/', (req, res) => {
   console.log(req);
-  // console.log(`Receive GET request to http://localhost:${port}`);
 });
+
+// app.get('/download', async (req, res) => {
+//   try {
+//     const path = req.query.path;
+
+//     const response = await dbx.filesDownload({ path });
+
+//     fs.writeFile(
+//       response.result.name,
+//       response.result.fileBinary,
+//       'binary',
+//       function (err) {
+//         if (err) {
+//           console.error(err);
+//           res.status(500).json({ message: 'Error saving file' });
+//         } else {
+//           console.log('File: ' + response.result.name + ' saved.');
+//           res.json({ message: 'Success' });
+//         }
+//       }
+//     );
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Error downloading file' });
+//   }
+// });
 
 app.get('/download', async (req, res) => {
   const path = req.query.path;
-  // console.log('receivedString', receivedString);
 
-  // dbx
-  //   .sharingCreateSharedLinkWithSettings({ path })
-  //   .then(function (response) {
-  //     console.log('response:');
-  //     console.log(response);
-  //     console.log('shared link:');
-  //     console.log(response.result.url);
-  //   })
-  //   .catch(function (error) {
-  //     console.error(error);
-  //   });
+  try {
+    const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
+    console.log('Shared link:');
+    console.log(response.result.url);
+  } catch (error) {
+    const response = await dbx.sharingListSharedLinks({
+      path,
+      direct_only: true,
+    });
+    const sharedLink = response.result.links[0].url;
+    console.log('Shared link:', sharedLink);
+  }
 
   dbx
     .filesDownload({ path })
@@ -76,25 +100,6 @@ app.get('/download', async (req, res) => {
 
   res.json({ message: 'String received successfully' });
 });
-
-// app.post('/save-file', async (req, res) => {
-//   try {
-//     const data = req.body; // Assuming the blob data is sent in the request body
-
-//     console.log('data', data);
-
-//     // Specify the local path where you want to save the file
-//     const localFilePath = './uploads/your-filename.txt';
-
-//     // Write the blob data to a local file
-//     fs.writeFileSync(localFilePath, data);
-
-//     res.status(200).send('File saved successfully');
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

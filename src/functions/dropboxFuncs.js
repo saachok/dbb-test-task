@@ -2,8 +2,7 @@ import { Dropbox } from 'dropbox';
 import fetch from 'isomorphic-fetch';
 
 const tempAccessToken =
-  'uat.ACP3W465iL1d7Y_IkxFhknJ0w0jfbkOMJoa5UZMb2C-mLn1mAQ7f20KfvMC1RxSFdnKAF6Xhk-4Sw2KUobd8z_b2s4d88CiGRCgmz1j1emBUbIwFRMJEjG4IkqAy-bzE93dlByqLAUQ6n3_dHuaSNnQ-sO1u7qZobY2d5odITTDbDlXASrqaBB1Hg30wf1I6gEHKbh-7oMw7c-8jh5i794YsBLOMicN2Z47NdgvcFur67XTi2l1EIFDCDW8zBjmqXZZ9-S-4LTl-26YrAyMfcdmUOSY2OignPkKJZrquxWOmNxLVsUBco-g8S-ivmOSnzF7qnZiFWtSfDxX_Pab7YttVxbMqMU0JAdm898uch4LBY6PSrTQxV-4OdJmbYleElLFGc7ozJ9GVV9KHvtiLjMUShOxwAG-LBrcLnAjPRyRTGwSzb9RlbpE9W_7e2uNCkHrRiYKbVWbB0vl4gi81xZJXOAZmOAT3Ky9I1NgmOaIVAk_O3vI-IzqrV5t1hNrx2zQvVnCFyqs6dp70tvxrXEuA5_T3Lg50mnNSl0GMV9ObXLuQmb_FpEDY0KAa3wP6-sE7X15CvC3AGlMa7UgB_BooNk0jYmyqy3m801hfR1VVLjchOnfoViX7vMZRqOlRDFooSp-T_AYS48YxFVawcAxsNmMKX11J5Qad-8lufkf8uup_f8Co5OoDDMTr7HrhoyLxbjLMGnVfJsJjB8m7n0oJNplNOeVtiiR9jCeGu0M-97SVTx6Su3qFP08gWRASKKMI8RnqKKvPrZ7yoYb9xtoS8Q0usnEcsro0IJt0k-QRvgps_rsZKr5Mltupak4mMBDVaMUFsYGMzHILJoltLxX2GwgF3dWyyGAT5QZTiQdTEcdA8uZBcakSQiz3VOcpBucg6JhINTJB1Xbw2u6eJ1mJeFCwjD5dcnxRxAjguXPB0-ueG918ch_1l0nDNnXMeurB9CPcqF3p_cxoPUu0TGzabjsqUCOwvfqxu_ivUkY-W9cdphscrH3gXoAu95OqdiiajIuBBK19VQO4NoXf5uGEVgihmXHxGLtyL6FV8uoz36wfHWLUV3cEtFfPiZK6cnLQ_-MmCdxH3t9zxrq3VW0R14takadUHqbmTlVxUD3lq9bDDga-kc8zvkQpMsMb9zhXmJao2C_oFtZfixPTFodWGlt6j3pzcDU_r81e7IGtVkW_4Y5oiDHGnxHGIAx9QNfuHM2czbwjGyxXjbesfY1cWmPtwFxy8F8fFaeS1YP29suPrzBhM5VbdpPvGUJhwOJLe-PEntANIpZKoz3JOvn8';
-
+  'uat.ACNewsNhqsB4Erz0BraH2NAGRPtkqAafP5bHqTBTTPY7xTrtoOcGrGrnFdeTeorsoibg6guXw_n3-TTjVPbMImbl8SUPYK6i-luoZJJrQX1BnP52UQfqZxIO5Iwp7PnnuJKiX29PSVQRMDW85Vbi1qaEhq-FeTgkyytfhY5VqUKO5Ahr52QzatmFYdZ_GY6qrKq3k16joVXkMgvQzMLc0YPvsJKcnErIaIwg-y_P4Oe2aOOhphHyRpiWWXzjzJDLMtMby7bC5W1BC8gZUm1k_Kh12VJUucWO8XINvBmCNJ2W8QN14YnFlx83E-ZkUxC32N_fhrnKnCaJAEFQcqKSBE33GNT8jW-302esvDipvUeufy0xxVzpp585EJxPMwTlaFqxlj2iiY4yIAY3zWDuxe3dCBkBeLmw9Te5Dmm1oCFycGRnl2CSicBHuu2AAKJxNX8OZS90VOgwZv1Q7qohysTpIIRIvMmfpiuOdyCw99SOw5OHwbeCmbJ2vwavB7kPI3DqILcWSGTZaqtdZTkEzLeTjMprjBL96-Kj6mlh29v6_q5y4qSENzWBIgKCuK5xlWMx1kPd98iY2tvGgpi88t-haWv8M14BcuquXI-6-Jr9impgdEH_c1XsAoFJK8CB6X_GtlNrMwyQYsze2iBHTqSNV7MhOg2yeo4_c4sAHewcBE8yxr1LICozB5FBgBl0ZYGoS2cM2lRbiKiNsUXj77V0dgVW-85_5N4qOwCGyjXYAsrMo6bJFTYL7qAEdKa2nE2GACPkgg5bBfjw573WSSZ-nj-mvbPXNMPFt1mqLD1wtaQg2YePJ2ywLxCeNkXt3yCgc4KEurqDFEQH_FzOOHT-rbtUpt1bT1N89fQ-8gSgoO9UtTle9ZW3sc8xsJCEj6r5aawbm58wis4ck5qdhvU17Hl-gQz99OF7ij8pZqdQzkkR0eh0WxJ3oyyRr_9xjKi5qi1qmOT4XN_e24mTFLLkJCXVN83rjN0SbbwwYY4lfwlGtP_x80yahKTLmeozB6niYqpa-7ieDCS8vNBrSQmZZCb3gsXq-MdTP4eN2l5lUXDSUEAgxsWKn8yzkQKdYHdGGVu_mR_oZCucZj_Zb5tjIovuf3K6T_nKrwDNJLVYsJ_S4w290YbFKPn4OXXukrg02dv2iN-fCQY65IyUAgXQiwBA_0jXzSBDA9-I4Xaie_zNmrVOSHdZDgWMBtaFoKIdP3MyxekhUyIvg_8A2l0rgqEndtAFKbIS5_UFtgWVwblsJJqwSLurbiaqU19THsDPvgqJJ6Pkptinsyx0SwAb';
 const dbx = new Dropbox({
   accessToken: tempAccessToken,
   fetch,
@@ -24,37 +23,19 @@ export const getThumbnails = async files => {
 };
 
 export const downloadFile = async path => {
-  // const headers = new Headers({
-  //   Authorization: 'Bearer ' + tempAccessToken,
-  //   'Dropbox-API-Arg': JSON.stringify({ path: path }),
-  // });
-
-  // const response = await fetch(
-  //   'https://content.dropboxapi.com/2/files/download',
-  //   { method: 'POST', headers }
-  // );
-
   console.log('path', path);
 
   // const response = await dbx.filesDownload({ path });
   // console.log('response', response);
   // return response.result;
+  fetch('http://localhost:8000/download?' + new URLSearchParams({ path }), {
+    mode: 'no-cors',
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-  const res = await fetch(
-    'http://localhost:8000/download?' + new URLSearchParams({ path }),
-    {
-      mode: 'no-cors',
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify({ data: path }),
-    }
-  );
-  const data = await res.json();
-  console.log('data', data);
+  // console.log('res', res);
 };
-// const response = await dbx.filesDownload({ path });
-// return response.result;
-// };
 
 export const getSharedLink = async path => {
   const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
