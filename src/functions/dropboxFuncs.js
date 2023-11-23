@@ -2,7 +2,8 @@ import { Dropbox } from 'dropbox';
 import fetch from 'isomorphic-fetch';
 
 const tempAccessToken =
-  'uat.ACIoKbBNiqJOBnbXFjD0Htj5sRJvNNfzAdcNRbIGSpb2rYNozD1HDdhwftw8b0nTwb5LiiMHYk_eeoAs9lg6L7lF1W61Ez38K9nElQAGa9A7rh5jiOSI0-c67R9BLKHgSKt3ie4mSwUDNKybOBi2Oj_r5X5m8lvxIRtq3zn1r8VE9ic4Z8fav_Olgs5tMgfRgpp4_6COxjyjkNerr6P-Bva0iLBO8LbPMfdqzbw0Z0UVeyWW_C64w3zcGgIPrJ0LsgFfgz_88NBcdqjrPNolI9DdWot50lXiYD67MnE98SBNILJ98tSO0SPNHYcQ0ksGzU4vEICyoQ0Kid9DpN756Z5UuPBEaY67VX1SyT-oCiNq6GQ2zO8CR0499qzrf020xGFfbHO-ixRzzd8JjmkZEzvtGGVHc7HwtrWAksIFeoyticrSCCabwlRLt7iG1Chw4CN5KsRZqNXz7YJQYLCIBQV-QByPOBAVDBWyFKFtMwx0poqXwVD55hV_l7nNeDsZNr9enxFP-do_3GnpwozBZh_g-dHnAAemgqG7x30EAT31T_WIz2f9qcdYU1Dgosugo2y-fpIg43bpeXfucejZz_trlsmRFMsauk3arGMqsnoLOU596TQLmUEH0Fc-CmF4aW7_gL-zqgLVoS9F4ac_US2hDwvv2-NDRmq8P2bAu2KvdUiaytyUOOzexMB3EExPYzNo1Yiu9zh3a6yEXb2jvJRgrIEUAZ02c17T1kWqbDDOnftjPNlJ2G978FdJAUAOj3DZD0m0n_u8tcNOYuaO4GdMS1qeNQG1KI-Qtf9ZMwUN4lpI6GeoYxmBmOIapwJZUCa1lZEKYydfy01_9xng1mw6H7umaX1bHOghMQPR7UXgBc4Eq39KwPb0_X-N--sGkpBDagA4DdZkVsKX-_tBUoNWu8DiToS26_qwVgfCFf1NP2UBMLYsJx87_tOkDYfFwGNXiJH5I6pCroWZzPwg8FLgwd4pX7PM57y1GVg_6dPVMdhjec3lck2P7monMW73fQO_uVqtr5sP47IjfzzubjBXZ0Czwoo6XjLWIcr8n7HCuIlRfBEyMpcjMMoe4eMz6nPpIW8ofhJ0I3t1kXscf-ut97sYa3btOipefSDKMLgScwV_hpLBrphoO4Yd12eXFtlXaNSMyQOB66socQpVu1qwteyLjaqIXZN3ePdigqv3nU5gM0B1Zi7at8scuwVvRDGMY3aOIurkuBw0W-Kjd0eaAP-dZfgulAgDUsCXuI-iOrkCr4vxK1agMeKZb5HjwU0KaL2D9Zmj3W574bEqK5Re';
+  'uat.ACP3W465iL1d7Y_IkxFhknJ0w0jfbkOMJoa5UZMb2C-mLn1mAQ7f20KfvMC1RxSFdnKAF6Xhk-4Sw2KUobd8z_b2s4d88CiGRCgmz1j1emBUbIwFRMJEjG4IkqAy-bzE93dlByqLAUQ6n3_dHuaSNnQ-sO1u7qZobY2d5odITTDbDlXASrqaBB1Hg30wf1I6gEHKbh-7oMw7c-8jh5i794YsBLOMicN2Z47NdgvcFur67XTi2l1EIFDCDW8zBjmqXZZ9-S-4LTl-26YrAyMfcdmUOSY2OignPkKJZrquxWOmNxLVsUBco-g8S-ivmOSnzF7qnZiFWtSfDxX_Pab7YttVxbMqMU0JAdm898uch4LBY6PSrTQxV-4OdJmbYleElLFGc7ozJ9GVV9KHvtiLjMUShOxwAG-LBrcLnAjPRyRTGwSzb9RlbpE9W_7e2uNCkHrRiYKbVWbB0vl4gi81xZJXOAZmOAT3Ky9I1NgmOaIVAk_O3vI-IzqrV5t1hNrx2zQvVnCFyqs6dp70tvxrXEuA5_T3Lg50mnNSl0GMV9ObXLuQmb_FpEDY0KAa3wP6-sE7X15CvC3AGlMa7UgB_BooNk0jYmyqy3m801hfR1VVLjchOnfoViX7vMZRqOlRDFooSp-T_AYS48YxFVawcAxsNmMKX11J5Qad-8lufkf8uup_f8Co5OoDDMTr7HrhoyLxbjLMGnVfJsJjB8m7n0oJNplNOeVtiiR9jCeGu0M-97SVTx6Su3qFP08gWRASKKMI8RnqKKvPrZ7yoYb9xtoS8Q0usnEcsro0IJt0k-QRvgps_rsZKr5Mltupak4mMBDVaMUFsYGMzHILJoltLxX2GwgF3dWyyGAT5QZTiQdTEcdA8uZBcakSQiz3VOcpBucg6JhINTJB1Xbw2u6eJ1mJeFCwjD5dcnxRxAjguXPB0-ueG918ch_1l0nDNnXMeurB9CPcqF3p_cxoPUu0TGzabjsqUCOwvfqxu_ivUkY-W9cdphscrH3gXoAu95OqdiiajIuBBK19VQO4NoXf5uGEVgihmXHxGLtyL6FV8uoz36wfHWLUV3cEtFfPiZK6cnLQ_-MmCdxH3t9zxrq3VW0R14takadUHqbmTlVxUD3lq9bDDga-kc8zvkQpMsMb9zhXmJao2C_oFtZfixPTFodWGlt6j3pzcDU_r81e7IGtVkW_4Y5oiDHGnxHGIAx9QNfuHM2czbwjGyxXjbesfY1cWmPtwFxy8F8fFaeS1YP29suPrzBhM5VbdpPvGUJhwOJLe-PEntANIpZKoz3JOvn8';
+
 const dbx = new Dropbox({
   accessToken: tempAccessToken,
   fetch,
@@ -23,6 +24,28 @@ export const getThumbnails = async files => {
 };
 
 export const downloadFile = async path => {
-  const response = await dbx.filesDownload({ path });
+  const headers = new Headers({
+    Authorization: 'Bearer ' + tempAccessToken,
+    'Dropbox-API-Arg': JSON.stringify({ path: path }),
+  });
+
+  const response = await fetch(
+    'https://content.dropboxapi.com/2/files/download',
+    { method: 'POST', headers }
+  );
+  const data = await response.blob();
+
+  await fetch('http://localhost:8000/save-file', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+};
+// const response = await dbx.filesDownload({ path });
+// return response.result;
+
+export const getSharedLink = async path => {
+  const response = await dbx.sharingCreateSharedLinkWithSettings({ path });
+  // const response = await dbx.sharingGetSharedLinkMetadata({ url: path });
   return response.result;
 };
