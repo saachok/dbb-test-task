@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './PathForm.module.scss';
+import { ROOT_PATH } from '../../constant';
 
 const PathForm = ({ onSubmit, path }) => {
   const [inputPath, setInputPath] = useState('');
@@ -9,7 +10,8 @@ const PathForm = ({ onSubmit, path }) => {
   };
 
   const handleGoBack = () => {
-    if (path.toLocaleLowerCase() === '/server app') return;
+    //FIXME: Update security
+    if (path.toLocaleLowerCase() === ROOT_PATH) return;
     let lastIndex = path.lastIndexOf('/');
     let newPath = path.substring(0, lastIndex);
     onSubmit(newPath);

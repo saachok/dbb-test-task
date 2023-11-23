@@ -5,8 +5,8 @@ import PathForm from './components/PathForm/PathForm';
 import Toolbox from './components/Tools/Toolbox/Toolbox';
 
 import styles from './App.module.scss';
-
-const ROOT_PATH = '/server_app';
+import { addFileType } from './functions/utils';
+import { ROOT_PATH } from './constant';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -17,8 +17,11 @@ function App() {
       try {
         console.log('location', location);
         const res = await getListFolders(location);
-        setItems(res.entries);
-        getThumbnails(res.entries);
+
+        const fetchedItems = res.entries.map(addFileType);
+
+        setItems(fetchedItems);
+        getThumbnails(fetchedItems);
       } catch (error) {
         alert(`Can't find entered directory.`);
 

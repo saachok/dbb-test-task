@@ -15,7 +15,7 @@ export const getListFolders = async path => {
 
 export const getThumbnails = async files => {
   const paths = files
-    .filter(file => file['.tag'] === 'file')
+    .filter(file => file.type === 'file')
     .map(file => ({ path: file.path_lower, size: 'w32h32' }));
 
   const response = await dbx.filesGetThumbnailBatch({ entries: paths });

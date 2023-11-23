@@ -1,0 +1,20 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 2rem;
+
+  &:hover {
+    background-color: rgb(136, 174, 187);
+    cursor: pointer;
+  }
+}
+
+.info-area {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0;
+}
