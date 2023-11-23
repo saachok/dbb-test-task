@@ -54,6 +54,24 @@ export const getSharedLink = async path => {
     link = sharedLink;
   } finally {
     return { sharedLink: link };
-    // console.log('link', link);
   }
+};
+
+export const getSharedLinkFile = SHARED_LINK => {
+  dbx
+    .sharingGetSharedLinkFile({ url: SHARED_LINK })
+    .then(data => {
+      const downloadUrl = URL.createObjectURL(data.fileBlob);
+      const downloadButton = document.createElement('a');
+      downloadButton.setAttribute('href', downloadUrl);
+      downloadButton.setAttribute('download', data.name);
+      downloadButton.setAttribute('class', 'button');
+      downloadButton.innerText = 'Download: ' + data.name;
+
+      // Trigger download
+      downloadButton.click();
+    })
+    .catch(error => {
+      console.error(error);
+    });
 };
