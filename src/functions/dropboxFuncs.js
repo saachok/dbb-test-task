@@ -23,11 +23,6 @@ export const getThumbnails = async files => {
 };
 
 export const downloadFile = async path => {
-  console.log('path', path);
-
-  // const response = await dbx.filesDownload({ path });
-  // console.log('response', response);
-  // return response.result;
   const response = await fetch(
     'http://localhost:8000/download?' + new URLSearchParams({ path }),
     {
@@ -61,14 +56,13 @@ export const getSharedLinkFile = SHARED_LINK => {
   dbx
     .sharingGetSharedLinkFile({ url: SHARED_LINK })
     .then(data => {
-      const downloadUrl = URL.createObjectURL(data.fileBlob);
+      const downloadUrl = URL.createObjectURL(data.result.fileBlob);
       const downloadButton = document.createElement('a');
       downloadButton.setAttribute('href', downloadUrl);
-      downloadButton.setAttribute('download', data.name);
+      downloadButton.setAttribute('download', data.result.name);
       downloadButton.setAttribute('class', 'button');
-      downloadButton.innerText = 'Download: ' + data.name;
+      downloadButton.innerText = 'Download: ' + data.result.name;
 
-      // Trigger download
       downloadButton.click();
     })
     .catch(error => {

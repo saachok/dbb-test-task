@@ -8,8 +8,6 @@ const folderBase64Icon =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA70lEQVR4nO2ZMQrCQBREp4rgYaxsjGew8FAaray8mJUHSMwVxObLwhcCCbLRYGbjPJhqN7DD223yASFELBmAI4AbAItI2LcFIYfIAs08ACxBRuWHyyP3n3z/FcAcRJgnlhmAi39zRsJFAgsA9w+u5LepABT+rgcpEtg0ruWvsx+yyBisG2aSLvL2vJMrUo903/ukjimSWlq8FlbgJ/+rN5IKpiJkmIyQYTJChskIGSYjZJiMkGEyQobJCBkmI2SYjJBhMkKGyQgZNnkjlS+EIUoqg56ya7Eg+LNuPbPrKpJ5mbHmgX1SeonOYagQAi2eGqmWy/FZdjgAAAAASUVORK5CYII=';
 
 const ItemsList = ({ items, setLocation }) => {
-  console.log('items', items);
-
   return (
     <ul className={styles.list}>
       {items

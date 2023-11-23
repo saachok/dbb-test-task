@@ -1,8 +1,4 @@
-import {
-  downloadFile,
-  getSharedLink,
-  getSharedLinkFile,
-} from '../../functions/dropboxFuncs';
+import { getSharedLink, getSharedLinkFile } from '../../functions/dropboxFuncs';
 
 import styles from './Item.module.scss';
 
@@ -12,10 +8,9 @@ const Item = ({ file, thumbnail, setLocation }) => {
   };
 
   const handleDownload = async () => {
-    // const response = await downloadFile(file.path_lower);
-
     const response = await getSharedLink(file.path_lower);
-    getSharedLinkFile(response.sharedLink);
+    const { sharedLink } = response;
+    getSharedLinkFile(sharedLink);
   };
 
   return (
