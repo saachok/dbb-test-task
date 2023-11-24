@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to start App: 
 
-### 1. Make sure that you use needed version of node.js (version)
+### 1. Make sure that you use needed version of node.js (v16.16.0)
 
 [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) allows you to quickly install and use different versions of node via the command line.
 
@@ -18,10 +18,16 @@ There is `.env` file in the root folder, it should not be pushed to the reposito
 It contains REACT_APP_ACCESS_TOKEN for a new account that was created for testing. 
 You can replace it with your own token. 
 
-To get access token for your account go to [url](https://) and paste it to the .env  
+To get access token for your account go to [Dropbox API](https://dropbox.github.io/dropbox-api-v2-explorer/#check_app) and authorize with Google credentials provided below:
 
+email:      dbb.test.task.dropbox@gmail.com\
+password:   DBB_Test_Task
 
-### 4. run react app locally npm start
+After successfully auth with Google return to [Dropbox API](https://dropbox.github.io/dropbox-api-v2-explorer/#check_app) and press `Get Token` button.\
+Then copy created string with an access token.\
+Paste it to `.env` for REACT_APP_ACCESS_TOKEN.
+
+### 4. run react app locally with `npm start`
 
 
 Runs the app in the development mode.\
