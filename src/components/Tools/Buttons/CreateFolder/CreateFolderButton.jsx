@@ -1,11 +1,21 @@
+import { createDropboxFolder } from '../../../../functions/dropboxFuncs';
 import styles from './CreateFolderButton.module.scss';
 
-const CreateFolderButton = () => {
+const CreateFolderButton = ({ path }) => {
+  const handeCreateFolder = async () => {
+    const folderName = prompt('Please enter folder name:');
+    const folderPath = path + '/' + folderName;
+    try {
+      await createDropboxFolder(folderPath);
+      alert('Folder created!');
+    } catch (error) {
+      alert(error);
+      console.error(error);
+    }
+  };
+
   return (
-    <span
-      className={styles['create-btn']}
-      onClick={() => alert('Not implemented')}
-    >
+    <span className={styles['create-btn']} onClick={handeCreateFolder}>
       <span>
         <svg
           viewBox="0 0 24 24"

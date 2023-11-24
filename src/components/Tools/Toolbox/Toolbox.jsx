@@ -12,7 +12,7 @@ const Toolbox = ({ path }) => {
     <div className={styles.toolbox}>
       <CreateButton />
       <UploadButton path={path} />
-      <CreateFolderButton />
+      <CreateFolderButton path={path} />
       <RecordButton />
       <EditPDFButton />
       <GetSignaturesButton />

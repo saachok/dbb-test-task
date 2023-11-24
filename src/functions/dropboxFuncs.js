@@ -47,6 +47,11 @@ export const uploadFile = async (fileInput, path) => {
   }
 };
 
+export const createDropboxFolder = async path => {
+  const response = await dbx.filesCreateFolderV2({ path, autorename: true });
+  console.log('response', response);
+};
+
 export const getSharedLink = async path => {
   let link = null;
   try {
