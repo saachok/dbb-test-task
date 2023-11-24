@@ -1,13 +1,18 @@
+import { useContext } from 'react';
+import { LocationContext } from '../../../../context/LocationContext';
+
 import { createDropboxFolder } from '../../../../functions/dropboxFuncs';
 import styles from './CreateFolderButton.module.scss';
 
 const CreateFolderButton = ({ path }) => {
+  const { updateFolders } = useContext(LocationContext);
+
   const handeCreateFolder = async () => {
     const folderName = prompt('Please enter folder name:');
     const folderPath = path + '/' + folderName;
     try {
       await createDropboxFolder(folderPath);
-      alert('Folder created!');
+      updateFolders();
     } catch (error) {
       alert(error);
       console.error(error);
