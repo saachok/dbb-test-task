@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getListFolders, getThumbnails } from './functions/dropboxFuncs';
-import ItemsList from './components/ItemsList/ItemsList';
+import { getListFolders } from './functions/dropboxFuncs';
+import Content from './components/Content/Content';
 import PathForm from './components/PathForm/PathForm';
 import Toolbox from './components/Tools/Toolbox/Toolbox';
 
@@ -21,7 +21,6 @@ function App() {
       const fetchedItems = res.entries.map(addFileType);
 
       setItems(fetchedItems);
-      getThumbnails(fetchedItems);
     } catch (error) {
       if (error.status === 401) {
         alert('Please log in.');
@@ -45,12 +44,12 @@ function App() {
   };
 
   return (
-    <LocationContext.Provider value={{ updateFolders: fetchData }}>
+    <LocationContext.Provider value={{ updateFolders: fetchData, setLocation }}>
       <div className={styles.toolkit}>
         <PathForm onSubmit={handleFormSubmit} path={location} />
         <Toolbox path={location} />
       </div>
-      <ItemsList items={items} setLocation={path => setLocation(path)} />
+      <Content items={items} />
     </LocationContext.Provider>
   );
 }

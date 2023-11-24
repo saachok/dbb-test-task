@@ -11,27 +11,6 @@ export const getListFolders = async path => {
   return response.result;
 };
 
-export const getThumbnails = async files => {
-  const paths = files
-    .filter(file => file.type === 'file')
-    .map(file => ({ path: file.path_lower, size: 'w32h32' }));
-
-  const response = await dbx.filesGetThumbnailBatch({ entries: paths });
-  return response.result;
-};
-
-export const downloadFile = async path => {
-  const response = await fetch(
-    'http://localhost:8000/download?' + new URLSearchParams({ path }),
-    {
-      mode: 'no-cors',
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  );
-  return response;
-};
-
 export const uploadFile = async (fileInput, path) => {
   const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
   const file = fileInput;

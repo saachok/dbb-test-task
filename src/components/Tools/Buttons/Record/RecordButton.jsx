@@ -1,11 +1,9 @@
+import { showNotImplementedAlert } from '../../../../functions/utils';
 import styles from './RecordButton.module.scss';
 
 const RecordButton = () => {
   return (
-    <span
-      className={styles['record-btn']}
-      onClick={() => alert('Not implemented')}
-    >
+    <span className={styles['record-btn']} onClick={showNotImplementedAlert}>
       <span>
         <svg
           viewBox="0 0 24 24"

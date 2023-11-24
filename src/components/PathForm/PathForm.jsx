@@ -10,7 +10,6 @@ const PathForm = ({ onSubmit, path }) => {
   };
 
   const handleGoBack = () => {
-    //FIXME: Update security
     if (path.toLocaleLowerCase() === ROOT_PATH) return;
     let lastIndex = path.lastIndexOf('/');
     let newPath = path.substring(0, lastIndex);

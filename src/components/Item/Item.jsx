@@ -2,12 +2,11 @@ import Folder from './Folder/Folder';
 import File from './File/File';
 
 const Item = ({ file }) => {
-  //FIXME: Add props to child components
   switch (file.type) {
     case 'folder':
-      return <Folder />;
+      return <Folder file={file} />;
     case 'file':
-      return <File />;
+      return <File file={file} />;
     default:
       return null;
   }

@@ -1,11 +1,9 @@
+import { showNotImplementedAlert } from '../../../../functions/utils';
 import styles from './GetSignaturesButton.module.scss';
 
 const GetSignaturesButton = () => {
   return (
-    <span
-      className={styles['get-sign-btn']}
-      onClick={() => alert('Not implemented')}
-    >
+    <span className={styles['get-sign-btn']} onClick={showNotImplementedAlert}>
       <span>
         <svg
           viewBox="0 0 32 32"

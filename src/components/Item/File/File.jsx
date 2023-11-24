@@ -6,11 +6,13 @@ import styles from './File.module.scss';
 
 import { FILE_BASE_64_ICON } from '../../../constant';
 
-const File = ({ file, onClick }) => {
+const File = ({ file }) => {
   const { path_lower: path } = file;
 
-  const handleClick = () => {
-    onClick(path);
+  const hadnleOpenFile = async () => {
+    const response = await getSharedLink(path);
+    const { sharedLink } = response;
+    window.open(sharedLink, '_blank');
   };
 
   const handleDownload = async () => {
@@ -21,7 +23,7 @@ const File = ({ file, onClick }) => {
 
   return (
     <li className={styles['list-item']}>
-      <div className={styles['info-area']} onClick={handleClick}>
+      <div className={styles['info-area']} onClick={hadnleOpenFile}>
         <img alt="Thumbnail" src={FILE_BASE_64_ICON} />
         {file.name}
       </div>

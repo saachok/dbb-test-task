@@ -1,11 +1,9 @@
+import { showNotImplementedAlert } from '../../../../functions/utils';
 import styles from './EditPDFButton.module.scss';
 
 const EditPDFButton = () => {
   return (
-    <span
-      className={styles['edit-btn']}
-      onClick={() => alert('Not implemented')}
-    >
+    <span className={styles['edit-btn']} onClick={showNotImplementedAlert}>
       <span>
         <svg
           viewBox="0 0 24 24"

@@ -9,3 +9,5 @@ export const sortByType = (a, b) => {
 export const addFileType = file => {
   return { ...file, type: file['.tag'] };
 };
+
+export const showNotImplementedAlert = () => alert('Not Implemented');
